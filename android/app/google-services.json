@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "375766170156",
+    "project_id": "find-your-fit-609f8",
+    "storage_bucket": "find-your-fit-609f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375766170156:android:e6691bf7e3492792f1af89",
+        "android_client_info": {
+          "package_name": "com.example.findyourfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375766170156-b100jo7jvb42077fg30kc7v7omp3rf4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdzgxCF8T3I9AYvERHVZoekjrmKvRd6HA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375766170156-b100jo7jvb42077fg30kc7v7omp3rf4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

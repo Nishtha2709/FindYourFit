@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:findyourfit/MediumScreenInput.dart';
+import 'package:findyourfit/medium_size_input.dart';
 import 'package:findyourfit/large_size_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
