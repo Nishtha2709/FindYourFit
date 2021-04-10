@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:async/async.dart';
@@ -6,7 +7,6 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:findyourfit/dress_model.dart';
 import 'package:path/path.dart';
-
 
 class CameraInput extends StatefulWidget {
   Dress dress;
@@ -35,11 +35,10 @@ class _CameraInput extends State<CameraInput> {
   Future openGallery() async {
     var galleryImage =
     await picker.getImage(source: ImageSource.gallery);
-    setState(() {
-      myImage = File(galleryImage.path);
-    });
+    // setState(() {
+    //   myImage = File(galleryImage.path);
+    // });
   }
-
 
   uploadImageToServer(File imageFile,String id) async {
     print("attempting to connect to server......");
@@ -66,7 +65,6 @@ class _CameraInput extends State<CameraInput> {
       Navigator.pop(this.context);
     });
     //print(respStr);
-
     OpenAlert(respStr);
 
   }
@@ -89,6 +87,7 @@ class _CameraInput extends State<CameraInput> {
         }
     );
   }
+
   Future<void> openDialogBox() async {
     return showDialog<void>(
       context: this.context,
@@ -139,8 +138,6 @@ class _CameraInput extends State<CameraInput> {
                     print(widget.dress.ID);
                     uploadImageToServer(myImage,'2');
                     print("button pressed");
-
-
                   },
                 ),
               ],
@@ -172,11 +169,16 @@ class _CameraInput extends State<CameraInput> {
         )
             : Image.file(myImage),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
+
         onPressed: () {
           openDialogBox();
           //loadSize();
         },
+        backgroundColor: Colors.black,
+
+
         child: Icon(Icons.add_a_photo),
       ),
     );

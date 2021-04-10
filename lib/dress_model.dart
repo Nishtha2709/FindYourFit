@@ -15,7 +15,7 @@ class Dress{
 List<Dress> dress=[
 
   Dress(
-    imageURL: 'images/myntra0.png',
+    imageURL: 'images/myntra7.png',
     dressName: 'Beautiful Black',
     dressname: 'Shine In Black',
     price: '1500',

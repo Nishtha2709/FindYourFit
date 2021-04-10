@@ -1,11 +1,17 @@
+import 'dart:io';
+import 'package:findyourfit/MediumScreenInput.dart';
+import 'package:findyourfit/large_size_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:findyourfit/dress_model.dart' as alpha;
 import 'package:get/get.dart';
 import 'dress_model.dart';
+import 'package:findyourfit/camera_input.dart';
+import 'package:findyourfit/small_size_input.dart';
 
 class SellerInput extends StatefulWidget {
   Dress dress;
+
 
   SellerInput({this.dress});
 
@@ -31,20 +37,25 @@ class _SellerInputState extends State<SellerInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Seller Input',
+    return Center(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Seller Input',
+          ),
+          backgroundColor: Colors.black,
         ),
-        backgroundColor: Colors.black,
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(15),
-          child: Form(
-            key: _key,
-            autovalidate: _autoValidate,
-            child: FormUI(),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(10),
+          child: Expanded(
+            child: Container(
+              //padding: EdgeInsets.all(),
+              child: Form(
+                key: _key,
+                autovalidate: _autoValidate,
+                child: FormUI(),
+              ),
+            ),
           ),
         ),
       ),
@@ -53,6 +64,7 @@ class _SellerInputState extends State<SellerInput> {
 
   Widget FormUI() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         TextFormField(
@@ -64,12 +76,18 @@ class _SellerInputState extends State<SellerInput> {
             widget.dress.dressName = val;
           },
         ),
+        SizedBox(
+          height: 20,
+        ),
         TextFormField(
           decoration:
-          InputDecoration(hintText: 'Description Of Garment line2 '),
+              InputDecoration(hintText: 'Description Of Garment line2 '),
           inputFormatters: [
             LengthLimitingTextInputFormatter(20),
           ],
+        ),
+        SizedBox(
+          height: 20,
         ),
         DropdownButton(
           items: items,
@@ -79,7 +97,14 @@ class _SellerInputState extends State<SellerInput> {
             Text(
               DressType = val,
             );
+            setState(() {
+              DressType;
+            });
           },
+
+        ),
+        SizedBox(
+          height: 20,
         ),
         TextFormField(
           decoration: InputDecoration(hintText: 'Price'),
@@ -87,48 +112,72 @@ class _SellerInputState extends State<SellerInput> {
             widget.dress.price = val;
           },
         ),
+        SizedBox(
+          height: 20,
+        ),
         TextFormField(
           decoration: InputDecoration(hintText: 'Display Image URL'),
           onSaved: (val) {
             widget.dress.imageURL = val;
           },
         ),
-        RaisedButton(
-          onPressed: _sendToServer,
-          child: Text('Upload'),
-          color: Colors.black,)
+        SizedBox(
+          height: 40,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SmallScreenInput(),
+                  ),
+                );
+              },
+              child: Text(
+                'SMALL',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              color: Colors.black,
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => MediumScreenInput(),
+                  ),
+                );
+              },
+              child: Text(
+                'MEDIUM',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              color: Colors.black,
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => LargeScreenInput(),
+                  ),
+                );
+              },
+              child: Text(
+                'LARGE',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              color: Colors.black,
+            ),
+          ],
+        ),
       ],
-
-
-      // RaisedButton(
-      //   onPressed: _sendToServer,
-      //   child: Text('Upload'),
-      //   color: Colors.black,)
-      //
-      //
-      //
-      // RaisedButton(
-      // onPressed: _sendToServer,
-      // child: Text('Upload'),
-      // color: Colors.black,)
-      // ],
-      //
-      //
-      //     RaisedButton(
-      //       onPressed: _sendToServer,
-      //       child: Text('Upload'),
-      //       color: Colors.black,)
-      //   ],
     );
-  }
-
-  _sendToServer() {
-    if (_key.currentState.validate()){
-      _key.currentState.save();
-    }else{
-      setState(() {
-        _autoValidate = true;
-      });
-    }
   }
 }

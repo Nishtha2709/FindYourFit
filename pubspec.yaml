@@ -31,7 +31,6 @@ dependencies:
   path_provider:
   image_picker: ^0.7.4
   firebase_core:
-  cloud_firestore:
   flutter:
     sdk: flutter
 
