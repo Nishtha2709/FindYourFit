@@ -15,9 +15,9 @@ class Dress{
 List<Dress> dress=[
 
   Dress(
-    imageURL: 'images/myntra7.png',
-    dressName: 'Beautiful Black',
-    dressname: 'Shine In Black',
+    imageURL: 'images/myntra7.jpg',
+    dressName: 'Beautiful Pink Top',
+    dressname: 'Shine In Pink',
     price: '1500',
     ID: '1',
   ),
@@ -47,10 +47,10 @@ List<Dress> dress=[
   ),
 
   Dress(
-    imageURL: 'images/myntra4.png',
-    dressName: 'Magenta',
-    dressname: 'Own this look',
-    price: '1750',
+    imageURL: 'images/myntra_8.jpg',
+    dressName: 'tshirt',
+    dressname: 'pretty red',
+    price: '300',
     ID: '5',
   ),
 ];

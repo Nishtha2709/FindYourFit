@@ -30,7 +30,9 @@ dependencies:
   async: ^2.5.0
   path_provider:
   image_picker: ^0.7.4
-  firebase_core:
+  firebase_core: ^1.0.3
+  firebase_database: ^6.1.2
+  firebase_storage:
   flutter:
     sdk: flutter
 

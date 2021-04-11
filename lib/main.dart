@@ -1,12 +1,16 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
 import 'dress_container.dart';
 import 'seller_input.dart';
 import 'dress_model.dart';
 import 'package:findyourfit/dress_model.dart' as alpha;
 import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
+  //await Firebase.initializeApp();
   runApp(MyApp());
 }
 

@@ -35,9 +35,9 @@ class _CameraInput extends State<CameraInput> {
   Future openGallery() async {
     var galleryImage =
     await picker.getImage(source: ImageSource.gallery);
-    // setState(() {
-    //   myImage = File(galleryImage.path);
-    // });
+    setState(() {
+      myImage = File(galleryImage.path);
+    });
   }
 
   uploadImageToServer(File imageFile,String id) async {
@@ -47,7 +47,7 @@ class _CameraInput extends State<CameraInput> {
     var length = await imageFile.length();
     print(length);
 
-    var uri = Uri.parse('http://4044a8a99ce9.ngrok.io/post_image');
+    var uri = Uri.parse('http://55fcaa73bf57.ngrok.io/post_image');
     print("connection established.");
     var request = new http.MultipartRequest("POST", uri);
     //request.fields['ID']=id;
@@ -60,13 +60,13 @@ class _CameraInput extends State<CameraInput> {
     request.fields['ID']='2';
     var response = await request.send();
     final respStr = await response.stream.bytesToString();
+    CircularProgressIndicator();
     print(respStr);
     setState(() {
       Navigator.pop(this.context);
     });
     //print(respStr);
     OpenAlert(respStr);
-
   }
 
   Future<void> OpenAlert(String respStr) async{
@@ -92,6 +92,7 @@ class _CameraInput extends State<CameraInput> {
     return showDialog<void>(
       context: this.context,
       builder: (BuildContext context) {
+
         return AlertDialog(
           shape: RoundedRectangleBorder(),
           backgroundColor: Colors.blue,
@@ -111,11 +112,16 @@ class _CameraInput extends State<CameraInput> {
                     ),
                   ),
                   onPressed: () {
-                    openCamera();
-                  },
+                    _showMyDialog();
+                    Future.delayed(const Duration(milliseconds: 4500), () {
+                      setState(() {
+                        openCamera();
+                      });
+                    });
+                    },
                 ),
                 MaterialButton(
-                  color: Colors.blue[900],
+                  color: Colors.black,
                   child: Text(
                     "Open Gallery",
                     style: TextStyle(
@@ -181,6 +187,29 @@ class _CameraInput extends State<CameraInput> {
 
         child: Icon(Icons.add_a_photo),
       ),
+    );
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: this.context,
+      builder: (BuildContext context)
+        {
+          Future.delayed(Duration(seconds: 5),() {
+            Navigator.of(context).pop(true);
+          });
+        return AlertDialog(
+          title: Text('Alert!'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Hold Camera at a distance of 95-100 cms away'),
+                Text('Contrast background is preferred'),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
